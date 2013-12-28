@@ -7,7 +7,7 @@
   <% } %>
 
   <% if (login.oauth.length > 0) { %>
-  <div class="login-oauth">Log in or Register with
+  <div class="login-oauth">THIS IS FROM REGISTRATION TEMPLATE
   <% _.each(login.oauth, function (e) { %>
   <div class="login-option">
     <a href="<%= e.endpoint %>" class="btn btn-c0 btn-login">
@@ -26,14 +26,10 @@
       <% if (login.oauth.length > 0) { %>
       or
       <% } %>
-      <% if (login.local.expand !== true) { %><a href="#" id="login-password"><% } %>Log In<% if (login.local.expand !== true) { %></a><% } %>
+      <% if (login.local.expand !== true) { %><a href="#" id="login-password"><% } %>TESTING<% if (login.local.expand !== true) { %></a><% } %>
       or
-      <a href="#" id="login-register">Register</a>
+      <a href="#register" id="login-register">Register TESTING</a>
       with your email address
-	<a href="#" id="login-password">login-password Modal Test</a>
-	<a href="#" id="login-username">login-username Link Modal Test</a>
-
-
     </div>
     <div class="alert alert-danger" id="login-error" style="display:none;"></div>
     <div class="login-form" <% if (login.local.expand !== true) { %>style="display:none;"<% } %>>

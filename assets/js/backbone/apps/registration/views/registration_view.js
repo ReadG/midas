@@ -3,11 +3,10 @@ define([
   'underscore',
   'backbone',
   'utilities',
-  'text!login_template',
   'text!registration_template'
-], function ($, _, Backbone, utils, LoginTemplate, RegistrationTemplate) {
+], function ($, _, Backbone, utils, RegistrationTemplate) {
 
-  var LoginView = Backbone.View.extend({
+  var RegistrationView = Backbone.View.extend({
 
     events: {
       'click .oauth-link'              : 'link',
@@ -42,13 +41,8 @@ define([
     },
 
     showRegister: function (e) {
-        this.modalComponent.cleanup();
-	this.modalComponent = new ModalComponent({
-        el: this.el,
-        id: "register",
-        modalTitle: "Register"
-      }).render();
-      $("#register").modal('show');
+      if (e.preventDefault) e.preventDefault();
+      alert('.registration-form');
     },
 
     submit: function (e) {
@@ -69,8 +63,8 @@ define([
         window.cache.userEvents.trigger("user:login", success);
       }).fail(function (error) {
         var d = JSON.parse(error.responseText);
-        self.$("#login-error").html(d.message);
-        self.$("#login-error").show();
+        self.$("#registration-error").html(d.message);
+        self.$("#registration-error").show();
       });
     },
 
@@ -79,5 +73,5 @@ define([
     },
   });
 
-  return LoginView;
+  return RegistrationView;
 });

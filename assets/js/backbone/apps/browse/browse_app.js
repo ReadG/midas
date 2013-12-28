@@ -10,13 +10,16 @@ define([
   'profile_show_controller',
   'task_model',
   'task_show_controller',
-  'task_edit_form_view'
-], function ($, _, Backbone, utils, NavView, BrowseListController, ProjectModel, ProjectShowController, ProfileShowController, TaskModel, TaskShowController, TaskEditFormView) {
+  'task_edit_form_view',
+  'registration_view',
+  'registration_controller'
+], function ($, _, Backbone, utils, NavView, BrowseListController, ProjectModel, ProjectShowController, ProfileShowController, TaskModel, TaskShowController, TaskEditFormView, RegistrationView, RegistrationController) {
 
   var BrowseRouter = Backbone.Router.extend({
 
     routes: {
       ''                          : 'redirectHome',
+      'register'	          : 'showRegister',
       'projects(/)'               : 'listProjects',
       'projects/:id(/)'           : 'showProject',
       'projects/:id/:action(/)'   : 'showProject',
@@ -40,11 +43,20 @@ define([
       if (this.projectShowController) { this.projectShowController.cleanup(); }
       if (this.profileShowController) { this.profileShowController.cleanup(); }
       if (this.taskShowController) { this.taskShowController.cleanup(); }
+      if (this.RegistrationController) { this.RegistrationController.cleanup(); }
       this.data = { saved: false };
     },
 
     redirectHome: function () {
       Backbone.history.navigate('/projects', { trigger: true });
+    },
+
+    showRegister: function () {
+      this.cleanupChildren();
+      this.RegistrationController = new RegistrationController({
+        target: 'register',
+        data: this.data
+      });
     },
 
     listProjects: function () {
