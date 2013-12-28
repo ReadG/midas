@@ -42,7 +42,7 @@ define([
 
     showRegister: function (e) {
       if (e.preventDefault) e.preventDefault();
-      alert('Register not yet implemented.');
+      alert('This is just a test!!!');
     },
 
     submit: function (e) {
